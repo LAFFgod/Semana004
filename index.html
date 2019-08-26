@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 04</title>
+    <script src="Sprite.js"></script>
+    <script src="Scene.js"></script>
+</head>
+<body>
+    <canvas></canvas>
+    <script>
+        var canvas = document.querySelector("canvas");
+        canvas.width= 600;
+        canvas.height= 480;
+        var ctx = canvas.getContext("2d");
+
+        var cena1= new Scene({ctx: ctx});
+        var pc = new Sprite();
+        cena1.adicionar(pc);
+        cena1.adicionar(new Sprite({x:160, y:150, color:"red"}));
+        cena1.adicionar(new Sprite({x:60, y:250, color:"red"}));
+        cena1.desenhar();
+    </script>
+</body>
+</html>
