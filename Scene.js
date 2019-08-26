@@ -17,3 +17,11 @@ Scene.prototype.desenhar = function(){
         this.sprites[i].desenhar(this.ctx);
     }
 };
+Scene.prototype.mover = function(){
+    for(var i = 0; i<this.sprites.length; i++){
+        this.sprites[i].mover(dt);
+    }
+};
+Scene.prototype.limpar=function(){
+    this.ctx.clearRect(0,0,this.w,this.h);
+}
