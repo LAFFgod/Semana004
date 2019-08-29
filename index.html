@@ -37,9 +37,50 @@
             return function(){
                 if(teclas.esquerda){this.vx=-120;}
                 if(teclas.direita){this.vx=120;}
-                if(!teclas.esquerda && !teclas.direita){this.vx=0;}
+                if(teclas.esquerda === teclas.direita){this.vx=0;}
+
+                if(teclas.cima){this.vy=-120;}
+                if(teclas.baixo){this.vy=120;}
+                if(teclas.cima === teclas.baixo){this.vy=0;}
             }
         }
+        addEventListener("keydown",function(e){
+            switch (e.keyCode) {
+                case 37:
+                    teclas.esquerda=1;
+                    break;
+                case 38:
+                    teclas.cima=1;
+                    break;
+                case 39:
+                    teclas.direita=1;
+                    break;
+                case 40:
+                    teclas.baixo=1;
+                    break;
+                default:
+                    break;
+            }
+        });
+        addEventListener("keyup",function(e){
+            switch (e.keyCode) {
+                case 37:
+                    teclas.esquerda=0;
+                    break;
+                case 38:
+                    teclas.cima=0;
+                    break;
+                case 39:
+                    teclas.direita=0;
+                    break;
+                case 40:
+                    teclas.baixo=0;
+                    break;
+                default:
+                    break;
+            }
+        });
+
         function passo (t){
             dt = (t-anterior)/1000;
             cena1.passo(dt);
