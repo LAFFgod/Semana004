@@ -13,6 +13,7 @@ function Sprite(params = {}){
         imune: 0,
         atirando: 0,
         comportar: undefined,
+        scene: undefined,
     }
     Object.assign(this, exemplo, params);
 }
@@ -20,14 +21,14 @@ Sprite.prototype = new Sprite();
 Sprite.prototype.constructor = Sprite;
 
 Sprite.prototype.desenhar=function(ctx){
+    //ctx.fillRect(-this.w/2,-this.h/2, this.w, this.h);
     ctx.save();
     ctx.translate(this.x, this.y);
+    ctx.strokeRect(-this.w/2,-this.h/2, this.w, this.h);
     ctx.rotate(this.a);
     ctx.fillStyle = this.color;
     ctx.fillStroke= "black";
     ctx.lineWidth= 1;
-    //ctx.fillRect(-this.w/2,-this.h/2, this.w, this.h);
-    //ctx.strokeRect(-this.w/2,-this.h/2, this.w, this.h);
     ctx.beginPath();
     ctx.moveTo(-this.w/2, -this.h/2);
     ctx.lineTo(-this.w/2, +this.h/2);
@@ -47,4 +48,6 @@ Sprite.prototype.mover = function(dt){
 
     this.y = this.y + this.vy*dt;
     this.a = this.a + this.va*dt;
+
+    this.cooldown = this.cooldown - dt;
 }
