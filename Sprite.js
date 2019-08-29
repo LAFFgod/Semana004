@@ -8,6 +8,7 @@ function Sprite(params = {}){
         w:10,
         a:0,
         va: 0,
+        vm: 0,
         color: "blue",
         imune: 0,
         atirando: 0,
@@ -33,11 +34,17 @@ Sprite.prototype.desenhar=function(ctx){
     ctx.lineTo(+this.w/2, 0);
     ctx.closePath();    
     ctx.fill();
-    ctx.stroke()
+    ctx.stroke();
+
     ctx.restore();
 }
 Sprite.prototype.mover = function(dt){
     this.x = this.x + this.vx*dt;
+
+    this.vx=this.vm*Math.cos(this.a);
+    this.vy=this.vm*Math.sin(this.a);
+
+
     this.y = this.y + this.vy*dt;
     this.a = this.a + this.va*dt;
 }
