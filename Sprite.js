@@ -14,6 +14,7 @@ function Sprite(params = {}){
         atirando: 0,
         comportar: undefined,
         scene: undefined,
+        cooldown: 0,
     }
     Object.assign(this, exemplo, params);
 }
