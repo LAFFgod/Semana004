@@ -33,6 +33,13 @@
             this.vy=20*Math.sign(alvo.y - this.y);
         }
     }
+        function porTeclasDirecionais(teclas){
+            return function(){
+                if(teclas.esquerda){this.vx=-120;}
+                if(teclas.direita){this.vx=120;}
+                if(!teclas.esquerda && !teclas.direita){this.vx=0;}
+            }
+        }
         function passo (t){
             dt = (t-anterior)/1000;
             cena1.passo(dt);
